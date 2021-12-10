@@ -1,0 +1,24 @@
+<h1>Editing Task</h1>
+
+<%= form_for(@task) do |f| %>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Starts At:" %>
+    <%= f.datetime_select :deadline, class: "form-control"%>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Show', @tasks %> |
+<%= link_to 'Back', tasks_path %>
