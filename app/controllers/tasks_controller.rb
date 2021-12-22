@@ -1,11 +1,12 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :mark_as_completed]
 
   def index
     @tasks = Task.all
   end
 
   def show
+
   end
 
   def new
@@ -40,6 +41,16 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
+  def mark_as_completed
+    if @task.completed == false
+      @task.update_attribute(:completed, true)
+      redirect_to root_path
+    else
+      @task.update_attribute(:completed, false)
+      redirect_to root_path
+    end
+  end
+
   private
 
   def set_task
@@ -47,6 +58,6 @@ class TasksController < ApplicationController
   end
 
   def tasks_params
-    params.require(:task).permit(:title, :description, :deadline)
+    params.require(:task).permit(:title, :subject_id, :subject, :description, :deadline)
   end
 end

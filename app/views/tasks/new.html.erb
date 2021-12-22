@@ -14,6 +14,11 @@
     <%= f.label "Starts At:" %>
     <%= f.datetime_select :deadline, class: "form-control"%>
   </div>
+
+  <div class="dropdown">
+    <%= f.label "Subject:" %>
+    <%= f.select :subject_id, Subject.all.collect { |p| [ p.title, p.id ] }, include_blank: true %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

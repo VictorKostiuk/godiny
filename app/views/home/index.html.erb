@@ -1,8 +1,41 @@
 <% if user_signed_in? %>
-  <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-  <%= link_to 'Edit Profile', edit_user_registration_path %>
-  <%= link_to 'Tasks', tasks_path	 %>
-    <p>Account: <%= current_user.email %></p>
+    <h3>Your tasks: </h3>
+
+  <% if current_user.tasks == [] %>
+  <% else %>
+    <% current_user.tasks.each do |task| %>
+      <% if task.completed == true %>
+
+      <% else %>
+        <ul>
+          <li>
+            <div>
+              <b>Title:</b> <%= task.title %>
+              <b>Subject:</b> <%= task.subject.title %>
+              <%= link_to "Complete", mark_as_completed_task_path(task) %>
+            </div>
+          </li>
+        </ul>
+      <% end %>
+    <% end %>
+  <% end %>
+
+
+  <h3>Your completed tasks: </h3>
+
+    <% current_user.tasks.where(completed: true).each do |task| %>
+        <ul>
+          <li>
+            <div>
+              <s><b>Title:</b> <%= task.title %> </s>
+              <s><b>Subject:</b> <%= task.subject.title %></s>
+              <%= link_to "X", mark_as_completed_task_path(task) %>
+            </div>
+          </li>
+        </ul>
+    <% end %>
+
+
   <%# if current_user.avatar.attached? %>
     <%#= image_tag current_user.avatar, height: '32', width: '32'%>
   <%# end %>
@@ -10,4 +43,5 @@
 <% else %>
   <%= link_to "Log in", new_user_session_path %>
 <% end %>
+
 
