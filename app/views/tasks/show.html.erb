@@ -1,9 +1,15 @@
-<p id="notice"><%= notice %></p>
+<div class="content">
+  <p id="notice"><%= notice %></p>
 
-<p>title: <%= @task.title %></p>
-<p>description: <%= @task.description %></p>
-<p>subject: <%= @task.subject.title %></p>
-<p>deadline: <%= @task.deadline %></p>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title"><%= @task.title %></h5>
+      <h6 class="card-subtitle mb-2 text-muted"><%= @task.subject.title %></h6>
+      <p class="card-text"><%= @task.description %></p>
+      <p class="card-text"><%= @task.deadline %></p>
+    </div>
+  </div>
 
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+  <%= link_to 'Edit', edit_task_path(@task), class: "btn btn-secondary" %>
+  <%= link_to 'Back', tasks_path, class: "btn btn-secondary" %>
+</div>

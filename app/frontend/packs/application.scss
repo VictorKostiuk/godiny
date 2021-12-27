@@ -1,0 +1,35 @@
+
+// Just a quick ugly style to see if our CSS works
+h1 {
+  text-decoration: underline;
+}
+
+// Import Bootstrap v5
+@import "~bootstrap/scss/bootstrap";
+body {
+  background-image: url(http://www.fonstola.ru/pic/201312/1920x1080/fonstola.ru-139316.jpg);
+  background-color: #cccccc;
+}
+.li {
+  list-style: none;
+}
+.baton {
+  padding-top: 12px;
+}
+.tasks {
+  padding-top: 12px;
+  width: 48%;
+  padding-left: 6%;
+}
+.but {
+  padding-top: 12px;
+}
+.content {
+  padding: 2% 1em 0 1em;
+  margin: 4% 10% 4% 10%;
+  width: 80%;
+  height: 75vh;
+  background-color: rgb(204, 204, 204);
+}
+
+
