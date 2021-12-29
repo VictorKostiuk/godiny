@@ -1,0 +1,23 @@
+<div class="content">
+  <div class="row">
+    <% current_user.tasks.each do |f|%>
+      <% if f.subject.title == @task.subject.title %>
+        <div class="col-sm-4">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title"> <%= f.title %> </h5>
+              <p class="small"><%= f.subject.title %></p>
+              <p class="small"><%= f.deadline.strftime("%d/%m/%Y  %H:%M:%S")  %></p>
+              <p class="card-text"><%= f.description %></p>
+              <% if f.completed == true %>
+                <p class="small">Completed</p>
+              <% else %>
+                <p class="small">Uncompleted</p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

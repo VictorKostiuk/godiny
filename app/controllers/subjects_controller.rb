@@ -27,7 +27,6 @@ class SubjectsController < ApplicationController
   end
 
   def update
-
     if @subject.update(subjects_params)
       redirect_to @subject
     else
