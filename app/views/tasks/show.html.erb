@@ -6,7 +6,7 @@
       <h5 class="card-title"><%= @task.title %></h5>
       <h6 class="card-subtitle mb-2 text-muted"><%= @task.subject.title %></h6>
       <p class="card-text"><%= @task.description %></p>
-      <p class="card-text"><%= @task.deadline %></p>
+      <p class="small"><%= @task.deadline.strftime("%d/%m/%Y  %H:%M:%S")  %></p>
     </div>
   </div>
 

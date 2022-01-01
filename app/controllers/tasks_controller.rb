@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy, :mark_as_completed, :find_subject]
 
   def index
-    @tasks = Task.all
+    @tasks = current_user.tasks
   end
 
   def show
@@ -44,6 +44,7 @@ class TasksController < ApplicationController
   def mark_as_completed
     if @task.completed == false
       @task.update_attribute(:completed, true)
+      MarkAsCompletedMailer.with( user: current_user, task: @task).new_email.deliver_now
       redirect_to root_path
     else
       @task.update_attribute(:completed, false)

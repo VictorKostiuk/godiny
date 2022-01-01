@@ -46,10 +46,11 @@ Rails.application.configure do
 
   # Tell Active Support which deprecation messages to disallow.
   config.active_support.disallowed_deprecation_warnings = []
-config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
-
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.perform_deliveries = true
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
 
