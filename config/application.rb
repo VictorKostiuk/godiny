@@ -19,6 +19,12 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+module BackgroundJobsWithSidekiq
+  class Application < Rails::Application
+    config.active_job.queue_adapter = Rails.env.production? ? :sidekiq : :async
+  end
+end
+
 Dotenv::Railtie.load
 
 HOSTNAME = ENV['HOSTNAME']
