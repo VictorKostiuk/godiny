@@ -29,19 +29,18 @@ class TasksController < ApplicationController
   def edit
   end
 
-  def update
-
-    if @task.update(tasks_params)
-      redirect_to @task
-    else
-      render :edit
+    def update
+      if @task.update(tasks_params)
+        redirect_to @task, status: :ok
+      else
+        render :edit
+      end
     end
-  end
 
-  def destroy
-    @task.destroy
-    redirect_to tasks_path
-  end
+   def destroy
+      @task.destroy
+         redirect_to tasks_path, notice: 'Todo was successfully destroyed.',status: :no_content
+    end
 
   def mark_as_completed
     if @task.completed == false
