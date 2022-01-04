@@ -16,15 +16,13 @@ class TasksController < ApplicationController
   def create
     @task = current_user.tasks.new(tasks_params)
 
-        if @task.save
-#           DeadlineWorker.perform_in(5.seconds)
-          DeadlineWorker.perform_async(current_user.id, @task.id)
-          redirect_to @task
-        else
-          render :new
-        end
+      if @task.save
+        DeadlineWorker.perform_in(@task.deadline - 1.hour, current_user.id, @task.id)
+        redirect_to @task
+      else
+        render :new
+      end
   end
-
 
   def edit
   end
